@@ -9,9 +9,9 @@ const MyAddedItems = () => {
     const { user } = useContext(AuthContext)
     const [myAddedItems, setMyAddedItems] = useState([])
     // const axiosSecure = useAxios()
-    console.log(myAddedItems[0])
+    
 
-    const url = `http://localhost:5000/myorders?email=${user?.email}`
+    const url = `http://localhost:5000/myaddeditems?email=${user?.email}`
     useEffect(() => {
         axios.get(url)
             .then(res => {
@@ -21,17 +21,7 @@ const MyAddedItems = () => {
         //     .then(res => res.json())
         //     .then(data => setMyBookings(data))
     }, [url])
-    //     const handleDelete = (id)=>{
-    //         fetch(`https://car-doctor-server-three-steel.vercel.app/order/${id}`,{
-    //             method:'DELETE'
-    //         })
-    //         .then(res=>res.json())
-    //         .then(()=>{
-    //             const remaining = myAddedItems.filter(item=>item._id!==id)
-    //             setMyAddedItems(remaining) 
-    //             toast("Item deleted from your cart")
-    //     })
-    // }
+    
     return (
         <div>
             {/* {

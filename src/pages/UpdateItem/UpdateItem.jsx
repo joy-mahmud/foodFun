@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -6,20 +7,29 @@ import { toast } from "react-toastify";
 
 const UpdateItem = () => {
     const id = useParams()
-    const [foodData, setFoodData] = useState([])
-    const [loading, setLoading] = useState(true)
-    const { item_name, img, food_origin, price, quantity, category, description } = foodData
+    // const [foodData, setFoodData] = useState([])
+    // const [loading, setLoading] = useState(true)
+   
+    const { isPending, error, data } = useQuery({
+            queryKey: ['repoData'],
+            queryFn: () => {
+                return axios.get(`http://localhost:5000/details/${id.id}`).then(res => res.data)
+            }
+    
+        })
+        if (isPending) {
+            return <span className="loading loading-spinner loading-lg"></span>
+        }
+        const { item_name, img, food_origin, price, quantity, category, description } = data
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/details/${id.id}`)
-            .then(res => {
-                setFoodData(res.data)
-                setLoading(false)
-            })
-    }, [id])
-    if (loading) {
-        return <span className="loading loading-spinner loading-lg"></span>
-    }
+    // useEffect(() => {
+    //     axios.get(`http://localhost:5000/details/${id.id}`)
+    //         .then(res => {
+    //             setFoodData(res.data)
+    //             setLoading(false)
+    //         })
+    // }, [id])
+   
     const handleUpdate = (e) => {
         e.preventDefault()
 
@@ -31,7 +41,7 @@ const UpdateItem = () => {
         const quantity = form.quantity.value
         const origin = form.origin.value
         const photo_url = form.photo_url.value
-        const updateItems = { foodName, price, category, desc, quantity, origin, photo_url }
+        const updateItems = { foodName, price, category, desc, quantity:quantity, origin, photo_url }
 
         axios.post(`http://localhost:5000/update/${id.id}`, updateItems)
             .then(res => {

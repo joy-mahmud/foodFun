@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Purchase = () => {
     const foodData = useLoaderData()
-    const { item_name, description, price, category, quantity, owner_email, img, food_origin,_id } = foodData
+    const { item_name, description, price,owner_name, category, quantity, owner_email, img, food_origin,_id } = foodData
     console.log(owner_email)
     const {user} = useContext(AuthContext)
     const handlePurchase = (e)=>{
@@ -31,7 +31,7 @@ const Purchase = () => {
         else if (quantity<order_quantity){
             return toast("we dont have this quntity of this product you want")
         }
-        const purchaseData = {foodName,price,date,order_quantity,buyer_name,email,itemId}
+        const purchaseData = {foodName,price,date,order_quantity,buyer_name,owner_name,email,img,itemId}
         axios.post('http://localhost:5000/orders',purchaseData)
         .then(res=>{
             console.log(res.data)

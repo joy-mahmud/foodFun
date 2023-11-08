@@ -14,15 +14,15 @@ const AddItem = () => {
 
         const form = e.target
         const item_name = form.food_name.value
-        const price = form.price.value
+        const price = parseInt(form.price.value)
         const category = form.category.value
         const description = form.desc.value
-        const quantity = form.quantity.value
+        const quantity = parseInt(form.quantity.value)
         const food_origin = form.origin.value
         const img = form.photo_url.value
         const order_count=0
-        const owner_email = form.owner.value 
-        const owner_name = form.owener_email.value
+        const owner_name = form.owner.value 
+        const owner_email = form.owner_email.value
       
         const Item = { item_name, img, food_origin, price, quantity, category, description,order_count,owner_name,owner_email }
         axios.post('http://localhost:5000/additem',Item)
