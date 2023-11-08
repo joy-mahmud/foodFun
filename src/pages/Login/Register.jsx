@@ -17,7 +17,7 @@ const Register = () => {
     const photoUrl = form.photoUrl.value 
     const email = form.email.value
     const password = form.password.value
-    console.log(email,password)
+
     const uppercase = /[A-Z]/;
     const SpecialChar = /[\W_]/;
 
