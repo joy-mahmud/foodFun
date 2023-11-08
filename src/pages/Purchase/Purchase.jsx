@@ -21,6 +21,7 @@ const Purchase = () => {
         const order_quantity = form.quantity.value 
         const buyer_name = form.buyer_name.value 
         const email = form.email.value 
+        const itemId = _id
         if(owner_email==user?.email){
             return toast("you added this product so you can not buy this product")
         }
@@ -30,9 +31,12 @@ const Purchase = () => {
         else if (quantity<order_quantity){
             return toast("we dont have this quntity of this product you want")
         }
-        const purchaseData = {foodName,price,date,order_quantity,buyer_name,email}
+        const purchaseData = {foodName,price,date,order_quantity,buyer_name,email,itemId}
         axios.post('http://localhost:5000/orders',purchaseData)
-        .then(res=>console.log(res.data))
+        .then(res=>{
+            console.log(res.data)
+            toast("You successfully ordered the food ")
+        })
 
 
 

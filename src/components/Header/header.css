@@ -1,3 +1,11 @@
 .active{
     color:#0DA3D6;
 }
+.showprofile{
+    top: 40px;
+    right: 0px;
+   
+}
+.hideProfile{
+    left: 1000px;
+}
