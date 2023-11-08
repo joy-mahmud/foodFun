@@ -67,7 +67,7 @@ const TopFood = () => {
                                 <p className="text-xl font-medium">{item.category}</p>
                                 <p className="font-medium">price:${item.price}</p>
                             </div>
-                            <button className="btn btn-outline w-full mt-3 text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]">Details</button>
+                            <button className="btn btn-outline w-full mt-3 text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]"><Link to={`/foodDetails/${item._id}`}>Details</Link></button>
                         </div>
                     </div>)
                 }

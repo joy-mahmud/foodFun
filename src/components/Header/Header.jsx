@@ -1,15 +1,18 @@
 
-import {  NavLink } from 'react-router-dom';
+import {  Link, NavLink } from 'react-router-dom';
 import "./header.css"
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Header = () => {
-    const {user,logOut} = useContext(AuthContext)
+    const {user,logOut, loading} = useContext(AuthContext)
     const handleLogout =()=>{
         logOut()
         .then(()=>console.log('Logged out successfully'))
         .catch((error)=>console.log('an error occurred'))
+    }
+    if(loading){
+        return <p>loading</p>
     }
     return (
         <div className='flex justify-between items-center my-2 container mx-auto'>
@@ -24,8 +27,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className='flex items-center gap-5'>
+               
             
-            {user?<button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" onClick={handleLogout}>LogOut</button>:<button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" ><NavLink to='/login'>Login</NavLink></button>}
+            {user?<div className='flex items-center'><img className=" hover:cursor-pointer mr-2 rounded-full w-6 h-6 md:w-8 md:h-8 lg:h-8 lg:w-8 ml-2 " src={`${user.photoURL}`}></img><button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" onClick={handleLogout}>LogOut</button></div> :<button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" ><Link to='/login'>Login</Link></button>}
             </div>
         </div>
     );
