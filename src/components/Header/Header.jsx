@@ -18,6 +18,9 @@ const Header = () => {
     const handleMyProfile = () => {
         setShowProfile(!showProfie)
     }
+    const hideMenu = ()=>{
+        setShowProfile(false)
+    }
 
     return (
         <div className='flex justify-between items-center my-2 container mx-auto'>
@@ -34,9 +37,9 @@ const Header = () => {
             <div className='flex items-center gap-5 relative'>
                 <div style={ {position: 'absolute', zIndex: '10'}} className={showProfie?'showprofile':'hideProfile'}>
                     <ul className="menu bg-base-200 w-56 rounded-box">
-                        <li><a>My added items</a></li>
-                        <li><a>Add a food item</a></li>
-                        <li><a>My order items</a></li>
+                        <li onClick={hideMenu}><a><Link to={'/myitems'}>My added items</Link></a></li>
+                        <li onClick={hideMenu}><a><Link to={'/additem'}>Add a food item</Link></a></li>
+                        <li onClick={hideMenu}><a><Link to={'/myorderitems'}>My order items</Link></a></li>
                     </ul>
                 </div>
 

@@ -11,6 +11,9 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import FoodDetails from "../pages/foodDetails/FoodDetails";
 import PrivateRoute from "./PrivateRoute";
 import Purchase from "../pages/Purchase/Purchase";
+import MyAddedItems from "../pages/myAddedItems/MyAddedItems";
+import AddItem from "../pages/AddItem/AddItem";
+import MyOrder from "../pages/myOrder/MyOrder";
 
 
   const router = createBrowserRouter([
@@ -37,6 +40,18 @@ import Purchase from "../pages/Purchase/Purchase";
             path:'/purchase/:id',
             element:<PrivateRoute><Purchase></Purchase></PrivateRoute>,
             loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+        },
+        {
+            path:'/myitems',
+            element:<MyAddedItems></MyAddedItems>
+        },
+        {
+            path:'/additem',
+            element:<AddItem></AddItem>
+        },
+        {
+            path:'/myorderitems',
+            element:<MyOrder></MyOrder>
         },
         {
             path:'/login',
