@@ -14,6 +14,7 @@ import Purchase from "../pages/Purchase/Purchase";
 import MyAddedItems from "../pages/myAddedItems/MyAddedItems";
 import AddItem from "../pages/AddItem/AddItem";
 import MyOrder from "../pages/myOrder/MyOrder";
+import UpdateItem from "../pages/UpdateItem/UpdateItem";
 
 
   const router = createBrowserRouter([
@@ -52,6 +53,10 @@ import MyOrder from "../pages/myOrder/MyOrder";
         {
             path:'/myorderitems',
             element:<MyOrder></MyOrder>
+        },
+        {
+            path:'/update/:id',
+            element:<UpdateItem></UpdateItem>
         },
         {
             path:'/login',
