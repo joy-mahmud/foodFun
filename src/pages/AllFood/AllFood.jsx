@@ -17,13 +17,13 @@ const AllFood = () => {
     // const { isPending, error, data } = useQuery({
     //     queryKey: ['repoData'],
     //     queryFn: () => {
-    //         return axios.get('http://localhost:5000/allfoods').then(res => res.data)
+    //         return axios.get('https://foodfun-server.vercel.app/allfoods').then(res => res.data)
     //     }
 
     // })
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/allfoods?page=${currentPage}&size=${itmesPerPage}`).then(res => {
+        axios.get(`https://foodfun-server.vercel.app/allfoods?page=${currentPage}&size=${itmesPerPage}`).then(res => {
             setCardData(res.data)
             setPending(false)
         })

@@ -1,37 +1,37 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../provider/AuthProvider";
+
 
 
 const UpdateItem = () => {
     const id = useParams()
-    const{user}=useContext(AuthContext)
+
     // const [foodData, setFoodData] = useState([])
     // const [loading, setLoading] = useState(true)
-   
+
     const { isPending, data } = useQuery({
-            queryKey: ['repoData'],
-            queryFn: () => {
-                return axios.get(`http://localhost:5000/details/${id.id}`).then(res => res.data)
-            }
-    
-        })
-        if (isPending) {
-         return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
+        queryKey: ['repoData'],
+        queryFn: () => {
+            return axios.get(`https://foodfun-server.vercel.app/details/${id.id}`).then(res => res.data)
         }
-        const { item_name, img, food_origin, price, quantity, category, description } = data
+
+    })
+    if (isPending) {
+        return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
+    }
+    const { item_name, img, food_origin, price, quantity, category, description } = data
 
     // useEffect(() => {
-    //     axios.get(`http://localhost:5000/details/${id.id}`)
+    //     axios.get(`https://foodfun-server.vercel.app/details/${id.id}`)
     //         .then(res => {
     //             setFoodData(res.data)
     //             setLoading(false)
     //         })
     // }, [id])
-   
+
     const handleUpdate = (e) => {
         e.preventDefault()
 
@@ -43,12 +43,13 @@ const UpdateItem = () => {
         const quantity = form.quantity.value
         const origin = form.origin.value
         const photo_url = form.photo_url.value
-        const updateItems = { foodName, price, category, desc, quantity:quantity, origin, photo_url }
+        const updateItems = { foodName, price, category, desc, quantity: quantity, origin, photo_url }
 
-        axios.post(`http://localhost:5000/update/${id.id}`, updateItems)
+        axios.post(`https://foodfun-server.vercel.app/update/${id.id}`, updateItems)
             .then(res => {
                 toast("Item is updated successfully")
-                console.log(res.data)})
+                console.log(res.data)
+            })
 
     }
     return (
@@ -85,8 +86,8 @@ const UpdateItem = () => {
 
                         </div>
                         <div className="col-span-2">
-                           <label htmlFor="">Short description</label>
-                            <textarea  name="desc" className=" w-full textarea textarea-bordered" defaultValue={description} placeholder="Short description"></textarea>
+                            <label htmlFor="">Short description</label>
+                            <textarea name="desc" className=" w-full textarea textarea-bordered" defaultValue={description} placeholder="Short description"></textarea>
                         </div>
 
                     </div>
