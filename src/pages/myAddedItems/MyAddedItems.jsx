@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const MyAddedItems = () => {
     const { user } = useContext(AuthContext)
     const [myAddedItems, setMyAddedItems] = useState([])
+    const [pending,setPending] = useState(true)
     // const axiosSecure = useAxios()
     
 
@@ -16,11 +17,16 @@ const MyAddedItems = () => {
         axios.get(url)
             .then(res => {
                 setMyAddedItems(res.data)
+                setPending(false)
+
             })
         // fetch(`https://car-doctor-server-three-steel.vercel.app/order?email=${user?.email}`)
         //     .then(res => res.json())
         //     .then(data => setMyBookings(data))
     }, [url])
+    if(pending){
+        return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
+    }
     
     return (
         <div>

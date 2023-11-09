@@ -10,7 +10,7 @@ const UpdateItem = () => {
     // const [foodData, setFoodData] = useState([])
     // const [loading, setLoading] = useState(true)
    
-    const { isPending, error, data } = useQuery({
+    const { isPending, data } = useQuery({
             queryKey: ['repoData'],
             queryFn: () => {
                 return axios.get(`http://localhost:5000/details/${id.id}`).then(res => res.data)
@@ -18,7 +18,7 @@ const UpdateItem = () => {
     
         })
         if (isPending) {
-            return <span className="loading loading-spinner loading-lg"></span>
+         return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
         }
         const { item_name, img, food_origin, price, quantity, category, description } = data
 

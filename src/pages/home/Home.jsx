@@ -1,5 +1,9 @@
 
 import Carousel from "./Carousel";
+import Catering from "./Catering.Jsx";
+import Shefs from "./Shefs";
+
+
 import TopFood from "./TopFood";
 
 const Home = () => {
@@ -7,6 +11,9 @@ const Home = () => {
         <div className="container mx-auto">
             <Carousel></Carousel>
             <TopFood></TopFood>
+            <Catering></Catering>
+            <Shefs></Shefs>
+            
             
         </div>
     );

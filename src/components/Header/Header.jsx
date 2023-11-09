@@ -37,9 +37,9 @@ const Header = () => {
             <div className='flex items-center gap-5 relative'>
                 <div style={ {position: 'absolute', zIndex: '10'}} className={showProfie?'showprofile':'hideProfile'}>
                     <ul className="menu bg-base-200 w-56 rounded-box">
-                        <li onClick={hideMenu}><a><Link to={'/myitems'}>My added items</Link></a></li>
-                        <li onClick={hideMenu}><a><Link to={'/additem'}>Add a food item</Link></a></li>
-                        <li onClick={hideMenu}><a><Link to={'/myorderitems'}>My order items</Link></a></li>
+                        <li onClick={hideMenu}><Link to={'/myitems'}>My added items</Link></li>
+                        <li onClick={hideMenu}><Link to={'/additem'}>Add a food item</Link></li>
+                        <li onClick={hideMenu}><Link to={'/myorderitems'}>My order items</Link></li>
                     </ul>
                 </div>
 

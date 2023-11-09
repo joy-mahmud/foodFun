@@ -50,7 +50,7 @@ const TopFood = () => {
 
     
     if (isPending) {
-        return <span className="loading loading-spinner loading-lg"></span>
+        return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
     // data && console.log(data)
     //   const {item_name,category,img,price} = data
