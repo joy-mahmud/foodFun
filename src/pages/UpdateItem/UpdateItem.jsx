@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const UpdateItem = () => {
     const id = useParams()
+    const{user}=useContext(AuthContext)
     // const [foodData, setFoodData] = useState([])
     // const [loading, setLoading] = useState(true)
    

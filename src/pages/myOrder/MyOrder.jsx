@@ -11,6 +11,7 @@ const MyOrder = () => {
     const [myAddedItems, setMyAddedItems] = useState([])
     const axiosSecure =useAxios()
     const url = `/myorders?email=${user?.email}`
+   
     useEffect(() => {
         axiosSecure.get(url)
             .then(res => {
@@ -24,15 +25,26 @@ const MyOrder = () => {
         return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
         const handleDelete = (id)=>{
-            fetch(`http://localhost:5000/delete/${id}`,{
-                method:'DELETE'
-            })
-            .then(res=>res.json())
-            .then(()=>{
-                const remaining = myAddedItems.filter(item=>item._id!==id)
-                setMyAddedItems(remaining) 
-                toast("Item deleted from your cart")
-        })
+             axiosSecure.delete(`/delete/${id}?email=${user?.email}`)
+             .then((res)=>{
+                        console.log(res.data)
+                        if(res.data.deletedCount==1){
+                            const remaining = myAddedItems.filter(item=>item._id!==id)
+                            setMyAddedItems(remaining) 
+                            toast("Item deleted from your cart")
+                        }
+                        
+                })
+        //     fetch(`http://localhost:5000/delete/?${id}?email=${user?.email}`,{
+        //         method:'DELETE'
+        //     })
+        //     .then(res=>res.json())
+        //     .then((data)=>{
+        //         console.log(data)
+        //         const remaining = myAddedItems.filter(item=>item._id!==id)
+        //         setMyAddedItems(remaining) 
+        //         toast("Item deleted from your cart")
+        // })
     }
     return (
         <div>
