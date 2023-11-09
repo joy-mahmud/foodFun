@@ -2,24 +2,24 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import useAxios from "../../hooks/useAxios";
 
 
 const MyOrder = () => {
     const { user } = useContext(AuthContext)
     const [loading,setLoading] = useState(true)
     const [myAddedItems, setMyAddedItems] = useState([])
-    const url = `http://localhost:5000/myorders?email=${user?.email}`
+    const axiosSecure =useAxios()
+    const url = `/myorders?email=${user?.email}`
     useEffect(() => {
-        axios.get(url)
+        axiosSecure.get(url)
             .then(res => {
                 setMyAddedItems(res.data)
                 setLoading(false)
 
             })
-        // fetch(`https://car-doctor-server-three-steel.vercel.app/order?email=${user?.email}`)
-        //     .then(res => res.json())
-        //     .then(data => setMyBookings(data))
-    }, [url,setLoading])
+       
+    }, [url,axiosSecure])
     if(loading){
         return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
