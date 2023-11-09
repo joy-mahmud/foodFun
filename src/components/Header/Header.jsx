@@ -24,9 +24,10 @@ const Header = () => {
 
     return (
         <div className='flex justify-between items-center my-2 container mx-auto'>
-            <h2 className='text-4xl font-bold text-[#0DA3D6]'>FoodFun</h2>
+            <h2 className='lg:text-4xl text-2xl font-bold text-[#0DA3D6]'>FoodFun</h2>
+
             <div>
-                <ul className='flex gap-5 text-xl font-medium'>
+                <ul className='flex lg:gap-5 gap-1 text-xl font-medium'>
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/allfoods">All Food</NavLink></li>
                     <li><NavLink to={'/blog'}>Blog</NavLink></li>

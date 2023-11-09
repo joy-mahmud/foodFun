@@ -16,31 +16,31 @@ const Shefs = () => {
     return (
         <div className="mt-20">
             <h2 className='text-6xl font-extrabold mb-20 text-center'>Our master Shefs</h2>
-            <div data-aos="fade-up" className="grid  grid-cols-1 md:grid-cols-4 gap-5 lg:grid-cols-4">
+            <div data-aos="fade-up" className="grid  grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-4">
                 <div>
-                    <img className="mb-2 rounded-md" src={pic1} alt="" />
-                    <h2 className="text-2xl font-bold mb-1">John Smooth</h2>
-                    <p className="text-[#6F6F6F] mb-1">Restaurant Owner</p>
-                    <img src={icons} alt="" />
+                    <img className="mb-2 rounded-md w-full" src={pic1} alt="" />
+                    <h2 className="text-2xl font-bold mb-1 ml-2">John Smooth</h2>
+                    <p className="text-[#6F6F6F] mb-1 ml-2">Restaurant Owner</p>
+                    <img className="ml-2" src={icons} alt="" />
                 </div>
                 <div>
-                    <img className="mb-2 rounded-md" src={pic2} alt="" />
-                    <h2 className="text-2xl font-bold mb-1">Rebeca Welson</h2>
-                    <p className="text-[#6F6F6F] mb-1">Head Chef  </p>
+                    <img className="mb-2 rounded-md w-full" src={pic2} alt="" />
+                    <h2 className="text-2xl font-bold mb-1 ml-2">Rebeca Welson</h2>
+                    <p className="text-[#6F6F6F] mb-1 ml-2">Head Chef  </p>
                   
-                    <img className="mb-2" src={icons} alt="" />
+                    <img className=" ml-2" src={icons} alt="" />
                 </div>
                 <div>
-                    <img className="mb-2 rounded-md" src={pic3} alt="" />
-                    <h2 className="text-2xl font-bold mb-1">Kharl Branyt</h2>
-                    <p className="text-[#6F6F6F] mb-1">Chef</p>
-                    <img src={icons} alt="" />
+                    <img className="mb-2 rounded-md w-full" src={pic3} alt="" />
+                    <h2 className="text-2xl font-bold mb-1 ml-2">Kharl Branyt</h2>
+                    <p className="text-[#6F6F6F] mb-1 ml-2">Chef</p>
+                    <img className="ml-2" src={icons} alt="" />
                 </div>
                 <div>
-                    <img className="mb-2 rounded-md" src={pic4} alt="" />
-                    <h2 className="text-2xl font-bold mb-1">Luke Simon</h2>
-                    <p className="text-[#6F6F6F] mb-1">Chef</p>
-                    <img  src={icons} alt="" />
+                    <img className="mb-2 rounded-md w-full" src={pic4} alt="" />
+                    <h2 className="text-2xl font-bold mb-1 ml-2">Luke Simon</h2>
+                    <p className="text-[#6F6F6F] mb-1 ml-2">Chef</p>
+                    <img className="ml-2"  src={icons} alt="" />
                 </div>
 
             </div>

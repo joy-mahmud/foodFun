@@ -57,7 +57,7 @@ const TopFood = () => {
     return (
         <div >
             <h2 className="text-5xl font-bold mt-10 mb-5 text-[#0DA3D6] text-center">Our top foods</h2>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {
                     topfood?.map(item => <div key={item._id} className="bg-[#B9D1DA] rounded-lg">
                         <img className="h-[300px] rounded-t-lg w-full" src={item.img} alt="" />

@@ -10,9 +10,9 @@ const Catering = () => {
         Aos.init({duration:1000})
     },[])
     return (
-        <div className="text-center bg-[#FAFAFA] mt-20 p-16">
+        <div className="text-center bg-[#FAFAFA] mt-20 p-5 md:p-10 lg:p-16">
             <h2 className='text-6xl font-extrabold mb-20'>Catering Services</h2>
-            <div data-aos="fade-up" className='grid grid-cols-3 gap-10'>
+            <div data-aos="fade-up" className='grid  grid-cols-1 md:grid-cols-3 gap-10'>
                 <div className="flex flex-col items-center gap-5">
                     <img className="w-[90px] h-[90px]" src={pic1} alt="" />
                     <h2 className="text-2xl font-bold">Birthday Party</h2>

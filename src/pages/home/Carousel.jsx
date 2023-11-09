@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import banner1 from '../../../public/images/banner/1.jpg'
 import banner2 from '../../../public/images/banner/2.jpg'
 import banner3 from '../../../public/images/banner/3.jpg'
@@ -20,7 +21,7 @@ const Carousel = () => {
                             Indulge in a world of flavors, recipes, and culinary adventures at FoodFun. Explore a treasure trove of delicious dishes, cooking tips, and foodie inspiration. 
                             </p>
                             <div className=''>
-                                <button className=" mr-5 btn btn-outline text-[#FFFF] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]">All Menus</button>
+                                <button className=" mr-5 btn btn-outline text-[#FFFF] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]"><Link to={'/allfoods'}>All Menus</Link></button>
                                 
                             </div>
                         </div>
