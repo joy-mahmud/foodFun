@@ -31,7 +31,8 @@ import Blog from "../pages/blog/Blog";
         },
         {
             path:'/allfoods',
-            element:<AllFood></AllFood>
+            element:<AllFood></AllFood>,
+            loader:()=>fetch('http://localhost:5000/foodcount')
         },
         {
             path:'/foodDetails/:id',

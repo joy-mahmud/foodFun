@@ -1,12 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
+import './allfood.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const AllFood = () => {
-    const [cardData,setCardData]=useState([])
-    const [pending,setPending] = useState(true)
+    const [cardData, setCardData] = useState([])
+    const [pending, setPending] = useState(true)
+
+    const [currentPage,setCurrentPage]=useState(0)
+    const {count}=useLoaderData()
+    console.log(count)
+    const itmesPerPage = 9;
+    
+    
     // const { isPending, error, data } = useQuery({
     //     queryKey: ['repoData'],
     //     queryFn: () => {
@@ -14,37 +21,52 @@ const AllFood = () => {
     //     }
 
     // })
-    useEffect(()=>{
-        axios.get('http://localhost:5000/allfoods').then(res => {
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/allfoods?page=${currentPage}&size=${itmesPerPage}`).then(res => {
             setCardData(res.data)
             setPending(false)
         })
-    },[])
-    
+    }, [currentPage])
+
     if (pending) {
         return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
-  
-    const handdleSearch = e=>{
+    const numberOfPages = Math.ceil(count / itmesPerPage)
+    console.log(numberOfPages)
+    const pages = [...Array(numberOfPages).keys()]
+
+    const handdleSearch = e => {
         e.preventDefault()
-        const searchValue = e.target.search.value 
+        const searchValue = e.target.search.value
         console.log(searchValue)
-        const filteredData = cardData.filter(item=>{
-           const itemName =  item.item_name.toLowerCase()
-           const itemCatagory = item.category.toLowerCase()
-           if(itemName===searchValue){
-            return item
-           }
-           else if (itemCatagory===searchValue){
-            return item
-           }
+        const filteredData = cardData.filter(item => {
+            const itemName = item.item_name.toLowerCase()
+            const itemCatagory = item.category.toLowerCase()
+            if (itemName === searchValue) {
+                return item
+            }
+            else if (itemCatagory === searchValue) {
+                return item
+            }
         })
         setCardData(filteredData)
 
     }
+    const handleNext =()=>{
+        if(currentPage<pages.length-1){
+            setCurrentPage(currentPage+1)
+        }
+        
+    }
+    const handlePrev =()=>{
+        if(currentPage>0){
+            setCurrentPage(currentPage-1)
+        }
+    }
 
     return (
-       <div className="container mx-auto">
+        <div className="container mx-auto">
             <h2 className="text-5xl font-bold mt-10 mb-5 text-[#0DA3D6] text-center">Our foods</h2>
             <div className="h-12 text-center mb-5"><form onSubmit={handdleSearch}><input type="text" name="search" className=" bg-white p-2 border boeder-2 rounded-l-lg w-1/2 outline-none" placeholder="search your food here" /><button className="rounded-r-lg bg-slate-400 px-4 py-[9px]">Search</button></form></div>
             <div className="grid grid-cols-3 gap-5">
@@ -61,9 +83,24 @@ const AllFood = () => {
                         </div>
                     </div>)
                 }
-               
+
+            </div>
+
+            <div className="text-center mt-10">
+                <button onClick={handlePrev} className='btn mr-2'>prev</button>
+            {
+                pages.map(page => <button
+                onClick={()=>setCurrentPage(page)}
+                className={currentPage==page?'activepage':''}
+                    key={page}
+                >
+                   <p className="text-xl p-2 bg-slate-400 ml-2 rounded-md">{page+1}</p>
+                </button>)
+            }
+             <button onClick={handleNext} className='btn ml-2'>next</button>
             </div>
            
+
 
         </div>
     );
