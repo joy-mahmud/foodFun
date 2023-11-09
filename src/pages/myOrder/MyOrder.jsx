@@ -75,7 +75,7 @@ const MyOrder = () => {
                             <td>{item.order_quantity}</td>
 
                             <th>
-                                <button onClick={handleDelete}  className="bg-[#0DA3D6] text-white rounded-md btn-xs">Delete</button>
+                                <button onClick={()=>handleDelete(item._id)}  className="bg-[#0DA3D6] text-white rounded-md btn-xs">Delete</button>
                             </th>
                         </tr>)
                     }
