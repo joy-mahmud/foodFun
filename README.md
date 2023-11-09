@@ -1,8 +1,8 @@
-# React + Vite
+# My website features:
+- My website has full functionality of user login and registration system
+- My website has firebase authentication system with extra login system with google
+- My website has full full functionality of adding products to the cart
+- There are also some private routes without login no one can enter these routes
+- The website has pagination system included for better performance
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[My live-site-link](https://brand-shop-ca560.web.app/)

@@ -9,12 +9,15 @@ const Header = () => {
     const [showProfie,setShowProfile] = useState(false)
     const handleLogout = () => {
         logOut()
-            .then(() => console.log('Logged out successfully'))
+            .then(() => {
+                setShowProfile(false)
+            })
             .catch((error) => console.log('an error occurred'))
     }
     if (loading) {
-        return <p>loading</p>
+        return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
+    
     const handleMyProfile = () => {
         setShowProfile(!showProfie)
     }
@@ -45,7 +48,7 @@ const Header = () => {
                 </div>
 
 
-                {user ? <div onClick={handleMyProfile} className='flex items-center'><img className=" hover:cursor-pointer mr-2 rounded-full w-6 h-6 md:w-8 md:h-8 lg:h-8 lg:w-8 ml-2 " src={`${user.photoURL}`}></img><button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" onClick={handleLogout}>LogOut</button></div> : <button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" ><Link to='/login'>Login</Link></button>}
+                {user ? <div className='flex items-center'><img onClick={handleMyProfile} className=" hover:cursor-pointer mr-2 rounded-full w-6 h-6 md:w-8 md:h-8 lg:h-8 lg:w-8 ml-2 " src={`${user.photoURL}`}></img><button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" onClick={handleLogout}>LogOut</button></div> : <button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" ><Link to='/login'>Login</Link></button>}
             </div>
         </div>
     );
