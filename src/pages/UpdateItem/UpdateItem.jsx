@@ -15,7 +15,7 @@ const UpdateItem = () => {
     const { isPending, data } = useQuery({
         queryKey: ['repoData'],
         queryFn: () => {
-            return axios.get(`https://foodfun-server.vercel.app/details/${id.id}`).then(res => res.data)
+            return axios.get(`http://localhost:5000/details/${id.id}`).then(res => res.data)
         }
 
     })
@@ -25,7 +25,7 @@ const UpdateItem = () => {
     const { item_name, img, food_origin, price, quantity, category, description } = data
 
     // useEffect(() => {
-    //     axios.get(`https://foodfun-server.vercel.app/details/${id.id}`)
+    //     axios.get(`http://localhost:5000/details/${id.id}`)
     //         .then(res => {
     //             setFoodData(res.data)
     //             setLoading(false)
@@ -45,7 +45,7 @@ const UpdateItem = () => {
         const photo_url = form.photo_url.value
         const updateItems = { foodName, price, category, desc, quantity: quantity, origin, photo_url }
 
-        axios.post(`https://foodfun-server.vercel.app/update/${id.id}`, updateItems)
+        axios.post(`http://localhost:5000/update/${id.id}`, updateItems)
             .then(res => {
                 toast("Item is updated successfully")
                 console.log(res.data)

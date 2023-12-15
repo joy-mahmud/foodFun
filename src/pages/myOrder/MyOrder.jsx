@@ -35,7 +35,7 @@ const MyOrder = () => {
                         }
                         
                 })
-        //     fetch(`https://foodfun-server.vercel.app/delete/?${id}?email=${user?.email}`,{
+        //     fetch(`http://localhost:5000/delete/?${id}?email=${user?.email}`,{
         //         method:'DELETE'
         //     })
         //     .then(res=>res.json())

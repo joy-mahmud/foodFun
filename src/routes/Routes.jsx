@@ -16,6 +16,8 @@ import AddItem from "../pages/AddItem/AddItem";
 import MyOrder from "../pages/myOrder/MyOrder";
 import UpdateItem from "../pages/UpdateItem/UpdateItem";
 import Blog from "../pages/blog/Blog";
+import TableBookingPage from "../pages/BookTable/TableBookingPage";
+import MyTable from "../pages/MyTables/MyTable";
 
 
   const router = createBrowserRouter([
@@ -32,17 +34,17 @@ import Blog from "../pages/blog/Blog";
         {
             path:'/allfoods',
             element:<AllFood></AllFood>,
-            loader:()=>fetch('https://foodfun-server.vercel.app/foodcount')
+            loader:()=>fetch('http://localhost:5000/foodcount')
         },
         {
             path:'/foodDetails/:id',
             element:<FoodDetails></FoodDetails>,
-            loader:({params})=>fetch(`https://foodfun-server.vercel.app/details/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
         },
         {
             path:'/purchase/:id',
             element:<PrivateRoute><Purchase></Purchase></PrivateRoute>,
-            loader:({params})=>fetch(`https://foodfun-server.vercel.app/details/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
         },
         {
             path:'/myitems',
@@ -55,6 +57,14 @@ import Blog from "../pages/blog/Blog";
         {
             path:'/myorderitems',
             element:<MyOrder></MyOrder>
+        },
+        {
+            path:'/bookTable',
+            element:<PrivateRoute><TableBookingPage></TableBookingPage></PrivateRoute>
+        },
+        {
+            path:'/mytable',
+            element:<MyTable></MyTable>
         },
         {
             path:'/update/:id',
