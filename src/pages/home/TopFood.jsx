@@ -11,7 +11,7 @@ const TopFood = () => {
     // const { isPending, error, data } = useQuery({
     //     queryKey: ['repoData'],
     //     queryFn: () => {
-    //         return axios.get('http://localhost:5000/allfoods').then(res => res.data)
+    //         return axios.get('https://foodfun-server.vercel.app/allfoods').then(res => res.data)
     //     }
 
     // })
@@ -19,7 +19,7 @@ const TopFood = () => {
     
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/allfoods').then(res => {
+        axios.get('https://foodfun-server.vercel.app/allfoods').then(res => {
             setData(res.data)
             setInspending(false)
         

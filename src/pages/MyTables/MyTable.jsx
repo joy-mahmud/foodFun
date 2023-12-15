@@ -9,7 +9,7 @@ const MyTable = () => {
     const { data, isPending } = useQuery({
         queryKey: ['myTble', user?.email],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/bookTable?email=${user.email}`)
+            const res = await axios.get(`https://foodfun-server.vercel.app/bookTable?email=${user.email}`)
             return res.data
         }
     })

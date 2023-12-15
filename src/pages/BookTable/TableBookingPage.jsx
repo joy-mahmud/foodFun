@@ -3,6 +3,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useAxios from "../../hooks/useAxios";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const TableBookingPage = () => {
@@ -15,10 +16,16 @@ const TableBookingPage = () => {
         const booking_date = form.booking_date.value
         const guest = form.guest.value
         const bookingData = { name, email, booking_date, guest }
-        axios.post('http://localhost:5000/bookTable', bookingData)
+        axios.post('https://foodfun-server.vercel.app/bookTable', bookingData)
             .then(res => {
                 console.log(res.data)
-                toast('You booked table successfully')
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your booked a table",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
             })
 
     }

@@ -32,7 +32,7 @@ const Purchase = () => {
             return toast("we dont have this quntity of this product you want")
         }
         const purchaseData = {foodName,price,date,order_quantity,buyer_name,owner_name,email,img,itemId}
-        axios.post('http://localhost:5000/orders',purchaseData)
+        axios.post('https://foodfun-server.vercel.app/orders',purchaseData)
         .then(res=>{
             console.log(res.data)
             toast("You successfully ordered the food ")
