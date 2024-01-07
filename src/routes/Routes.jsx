@@ -34,17 +34,17 @@ import MyTable from "../pages/MyTables/MyTable";
         {
             path:'/allfoods',
             element:<AllFood></AllFood>,
-            loader:()=>fetch('https://foodfun-server.vercel.app/foodcount')
+            loader:()=>fetch('http://localhost:5000/foodcount')
         },
         {
             path:'/foodDetails/:id',
             element:<FoodDetails></FoodDetails>,
-            loader:({params})=>fetch(`https://foodfun-server.vercel.app/details/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
         },
         {
             path:'/purchase/:id',
             element:<PrivateRoute><Purchase></Purchase></PrivateRoute>,
-            loader:({params})=>fetch(`https://foodfun-server.vercel.app/details/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
         },
         {
             path:'/myitems',

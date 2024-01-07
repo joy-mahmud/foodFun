@@ -1,5 +1,6 @@
 import {BiSolidPhoneCall} from 'react-icons/bi'
 import {AiTwotoneMail} from 'react-icons/ai'
+import { FaCopy, FaCopyright } from 'react-icons/fa';
 const Footer = () => {
     return (<>
         <footer className="footer p-10 bg-base-300 text-base-content mt-10">
@@ -26,7 +27,7 @@ const Footer = () => {
   </nav>
   
 </footer>
-<p className="bg-base-300 text-center text-xl font-medium pb-10">@All rights reserved by foodfun</p></>
+<p className="bg-base-300 flex justify-center items-center text-xl font-medium pb-10"><FaCopyright></FaCopyright><p> All rights reserved by foodfun 2024</p></p></>
     );
 };
 

@@ -16,7 +16,7 @@ const TableBookingPage = () => {
         const booking_date = form.booking_date.value
         const guest = form.guest.value
         const bookingData = { name, email, booking_date, guest }
-        axios.post('https://foodfun-server.vercel.app/bookTable', bookingData)
+        axios.post('http://localhost:5000/bookTable', bookingData)
             .then(res => {
                 console.log(res.data)
                 Swal.fire({

@@ -8,7 +8,7 @@ import useAxios from "../../hooks/useAxios";
 const MyOrder = () => {
     const { user } = useContext(AuthContext)
     const [loading,setLoading] = useState(true)
-    const [myAddedItems, setMyAddedItems] = useState([])
+    const [myAddedItem, setMyAddedItems] = useState([])
     const axiosSecure =useAxios()
     const url = `/myorders?email=${user?.email}`
    
@@ -29,13 +29,13 @@ const MyOrder = () => {
              .then((res)=>{
                         console.log(res.data)
                         if(res.data.deletedCount==1){
-                            const remaining = myAddedItems.filter(item=>item._id!==id)
+                            const remaining = myAddedItem.filter(item=>item._id!==id)
                             setMyAddedItems(remaining) 
                             toast("Item deleted from your cart")
                         }
                         
                 })
-        //     fetch(`https://foodfun-server.vercel.app/delete/?${id}?email=${user?.email}`,{
+        //     fetch(`http://localhost:5000/delete/?${id}?email=${user?.email}`,{
         //         method:'DELETE'
         //     })
         //     .then(res=>res.json())
@@ -70,7 +70,7 @@ const MyOrder = () => {
                 </thead>
                 <tbody>
                     {
-                        myAddedItems.map((item, idx) => <tr key={idx}>
+                        myAddedItem.map((item, idx) => <tr key={idx}>
                           <td></td>
                             <td>
                                 <div className="flex items-center space-x-3">

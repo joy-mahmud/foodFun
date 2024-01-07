@@ -4,12 +4,12 @@ import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://foodfun-server.vercel.app',
+    baseURL: 'http://localhost:5000',
     withCredentials: true
 })
 
 const useAxios = () => {
-    const { logOut } = useContext(AuthContext)
+    const { logOut,loading } = useContext(AuthContext)
     const navigate = useNavigate()
     useEffect(() => {
         axiosSecure.interceptors.response.use(res => {
@@ -24,7 +24,7 @@ const useAxios = () => {
                     .catch(error => { console.log(error) })
             }
         })
-    }, [])
+    }, [loading])
     return axiosSecure
 };
 

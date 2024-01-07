@@ -25,7 +25,7 @@ const AddItem = () => {
         const owner_email = form.owner_email.value
       
         const Item = { item_name, img, food_origin, price, quantity, category, description,order_count,owner_name,owner_email }
-        axios.post('https://foodfun-server.vercel.app/additem',Item)
+        axios.post('http://localhost:5000/additem',Item)
         .then(res=>{
             console.log(res.data)
             toast('You added the item successfully')

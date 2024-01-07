@@ -3,11 +3,26 @@ import { Link, NavLink } from 'react-router-dom';
 import "./header.css"
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from '../../hooks/UseCart';
+// import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+
 
 const Header = () => {
     const { user, logOut, loading } = useContext(AuthContext)
     const [showProfie, setShowProfile] = useState(false)
     const [status, setStatus] = useState(navigator.onLine)
+     const [data]=useCart()
+    // // console.log(cart)
+    // const { data=[], isPending } = useQuery({
+    //     queryKey: ['cartnumber', user?.email],
+    //     queryFn: async () => {
+    //         const res = await axios.get(`http://localhost:5000/myCart/${user?.email}`)
+    //         return res.data
+    //     }
+    // })
+    console.log(data)
     useEffect(() => {
         const handleOnline = () => {
             setStatus(true)
@@ -66,8 +81,15 @@ const Header = () => {
 
 
                 {user ? <div className='flex items-center'>
+                    <div className='relative mr-5'>
+                        <Link to={'/myorderitems'}>
+                            <FaShoppingCart className='text-3xl' />
+                            <div className="badge badge-secondary absolute -top-2 -right-4">{data.length}</div>
+                        </Link>
+                    </div>
+
                     <img onClick={handleMyProfile} className=" hover:cursor-pointer mr-2 rounded-full w-8 h-8 md:w-8 md:h-8 lg:h-8 lg:w-8 ml-2 relative" src={`${user.photoURL}`}></img>
-                   {status?<div className='w-3 h-3 rounded-full bg-green-500 absolute left-[30px] bottom-0'></div>:''} 
+                    {/* {status ? <div className='w-3 h-3 rounded-full bg-green-500 absolute left-[30px] bottom-0'></div> : ''} */}
                     <button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" onClick={handleLogout}>LogOut</button></div> : <button className="btn btn-sm btn-outline text-[#0DA3D6] hover:bg-[#0DA3D6] hover:text-white hover:border-[#0DA3D6]" ><Link to='/login'>Login</Link></button>}
             </div>
         </div>

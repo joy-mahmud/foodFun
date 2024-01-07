@@ -45,10 +45,10 @@ const Login = () => {
            
     }
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row items-center justify-center">
-
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className=" flex justify-center min-h-screen bg-base-200">
+            <div className=" lg:w-1/3 flex-col lg:flex-row items-center justify-center">
+                <h2 className='text-center my-5 text-4xl font-bold'>login now</h2>
+                <div className="card w-full shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
