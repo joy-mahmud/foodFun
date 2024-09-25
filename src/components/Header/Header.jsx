@@ -58,7 +58,7 @@ const Header = () => {
 
     return (
         <div className='flex justify-between items-center my-2 container mx-auto'>
-            <h2 className='lg:text-4xl text-2xl font-bold text-[#0DA3D6]'>FoodFun</h2>
+            <h2 className='lg:text-4xl text-2xl font-bold text-[#0DA3D6]'>Food Point</h2>
 
             <div>
                 <ul className='flex lg:gap-5 gap-1 text-xl font-medium'>

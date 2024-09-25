@@ -11,6 +11,7 @@ const useCart = () => {
         queryKey: ['cartnumber', user?.email],
         enabled:!loading,
         queryFn: async () => {
+           // const res = await axios.get(`http://localhost:5000/myCart/${user?.email}`)
             const res = await axios.get(`http://localhost:5000/myCart/${user?.email}`)
             return res.data
         }

@@ -1,31 +1,33 @@
-import axios from "axios";
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 
 
 const MyAddedItems = () => {
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
     const [myAddedItems, setMyAddedItems] = useState([])
-    const [pending,setPending] = useState(true)
+    const [pending, setPending] = useState(true)
     const axiosSecure = useAxios()
-    
-    const url = `/myaddeditems?email=${user?.email}`
-    useEffect(() => {
-        axiosSecure.get(url)
-            .then(res => {
-                setMyAddedItems(res.data)
-                setPending(false)
 
-            })
-       
-    }, [url,axiosSecure])
-    if(pending){
-        return <div className="text-center"><span className="loading loading-spinner loading-lg"></span></div>
+    const url = `/myaddeditems?email=${user?.email}`
+    console.log('myadded item',myAddedItems)
+    useEffect(() => {
+        if (!loading) {
+            axiosSecure.get(url)
+                .then(res => {
+                    setMyAddedItems(res.data)
+                    setPending(false)
+
+                })
+        }
+
+    }, [url, axiosSecure,loading])
+    if (pending) {
+        return 
     }
-    
+
     return (
         <div>
             {/* {

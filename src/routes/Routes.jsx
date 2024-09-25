@@ -32,6 +32,7 @@ import MyTable from "../pages/MyTables/MyTable";
             
         },
         {
+            // this is link of vercel ->foodfun-server.vercel.app
             path:'/allfoods',
             element:<AllFood></AllFood>,
             loader:()=>fetch('http://localhost:5000/foodcount')

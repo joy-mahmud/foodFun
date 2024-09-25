@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 
 const axiosSecure = axios.create({
+    //baseURL: 'https://foodfun-server.vercel.app',
     baseURL: 'http://localhost:5000',
     withCredentials: true
 })

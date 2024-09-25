@@ -27,7 +27,7 @@ const Footer = () => {
   </nav>
   
 </footer>
-<p className="bg-base-300 flex justify-center items-center text-xl font-medium pb-10"><FaCopyright></FaCopyright><p> All rights reserved by foodfun 2024</p></p></>
+<div className="bg-base-300 flex justify-center items-center text-xl font-medium pb-10"><FaCopyright></FaCopyright><p> All rights reserved by foodfun 2024</p></div></>
     );
 };
 
