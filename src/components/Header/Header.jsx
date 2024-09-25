@@ -6,13 +6,12 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from '../../hooks/UseCart';
 // import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+
 
 
 const Header = () => {
     const { user, logOut, loading } = useContext(AuthContext)
     const [showProfie, setShowProfile] = useState(false)
-    const [status, setStatus] = useState(navigator.onLine)
      const [data]=useCart()
     // // console.log(cart)
     // const { data=[], isPending } = useQuery({
