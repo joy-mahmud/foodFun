@@ -4,7 +4,8 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import useAxios from "../../hooks/useAxios";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import useCart from "../../hooks/useCart";
+import useCart from "../../hooks/UseCart";
+
 
 
 
@@ -36,7 +37,7 @@ console.log('my added item',myAddedItem)
     }
    // console.log(quantity)
     const handleDelete = (id) => {
-        axiosSecure.delete(`/delete/${id}?email=${user?.email}`)
+        axiosSecure.delete(`/deleteFromCart/${id}?email=${user?.email}`)
             .then((res) => {
                 console.log(res.data)
                 if (res.data.deletedCount == 1) {
@@ -70,6 +71,9 @@ console.log('my added item',myAddedItem)
         const id =parseInt(idx)
         const value = quantity[id]
         const newValue = value-1
+        if(newValue==0){
+            return
+        }
         const newqnty =[...quantity]
         newqnty[idx]=newValue
         setQuntity(newqnty)
@@ -79,7 +83,7 @@ console.log('my added item',myAddedItem)
             {/* {
       myBookings.map(item=>)
   } */}
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto ">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -114,7 +118,7 @@ console.log('my added item',myAddedItem)
                                     {item.foodName}
                                 </td>
                                 <td>
-                                    ${item.price}
+                                    ${item.price*quantity}
                                 </td>
                                 <td>{item.date}</td>
                                 <td>{item.owner_name}</td>
