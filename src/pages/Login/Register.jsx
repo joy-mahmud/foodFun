@@ -33,7 +33,8 @@ const Register = () => {
                     e.target.reset()
                     const userInfo ={
                         name:name,
-                        email:email
+                        email:email,
+                        role:'user'
                     }
                     const response = await axios.post('http://localhost:5000/users',userInfo)
                     console.log(response.data)

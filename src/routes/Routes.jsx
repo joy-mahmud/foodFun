@@ -21,6 +21,7 @@ import MyTable from "../pages/MyTables/MyTable";
 import Dashboard from "../pages/dashboard/Dashboard";
 import AdminRoute from "./AdminRoute";
 import AdminHome from "../pages/dashboard/AdminHome/AdminHome";
+import AllUsers from "../pages/dashboard/AllUsers/AllUsers";
 
 
 const router = createBrowserRouter([
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
             {
                 path:'adminHome',
                 element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+            },
+            {
+                path:'allUsers',
+                element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
             }
         ]
     },

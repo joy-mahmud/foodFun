@@ -1,33 +1,34 @@
-import { useQuery } from "@tanstack/react-query";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 
-const AdminHome = () => {
+const AllUsers = () => {
     const { user, loading } = useContext(AuthContext)
-    const { data: allOrders, loading: allOrdersLoading,refetch } = useQuery({
-        queryKey: [ 'allOrders',user?.email,],
+    const { data: allUsers, loading: allUsersLoading,refetch } = useQuery({
+        queryKey: ['allUsers',user?.email, ],
         enabled: !loading,
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/allOrders/${user?.email}`)
+            const response = await axios.get(`http://localhost:5000/allUsers/${user?.email}`)
             return response.data
         }
     })
-    if (loading || allOrdersLoading) {
+    if (loading || allUsersLoading) {
         return
     }
-    const handleStatus = async(status,id)=>{
+    const handleRole = async(role,email)=>{
         const statusInfo={
-            status:status
+            role:role,
+            email:email
+            
         }
-        const response = await axios.patch(`http://localhost:5000/updateStatus/${id}`,statusInfo)
+        const response = await axios.patch(`http://localhost:5000/updateRole/${user?.email}`,statusInfo)
         if(response.data.modifiedCount>0){
             refetch()
         }
       
     }
- 
     return (
         <div className="">
             <h2 className="text-center font-semibold text-[30px] my-5">All orders</h2>
@@ -39,32 +40,27 @@ const AdminHome = () => {
                             <tr>
 
                                 <th></th>
-                                <th>FoodName</th>
+                                <th>Name</th>
                                 <th>Email</th>
-                                <th>Total price</th>
-                                <th>Quantity</th>
-                                <th>Date</th>
-                                <th>Delivery status</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody className="">
                             {/* row 1 */}
                             {
-                                allOrders && allOrders.map((item, index) => <tr key={index}>
-                                    <td><img src={item.img} className="h-[70px] w-[70px] rounded-xl"></img></td>
-                                    <td>{item.foodName}</td>
+                                allUsers && allUsers.map((item, index) => <tr key={index}>
+                                    <th></th>
+                                    <td>{item.name}</td>
                                     <td>{item.email}</td>
-                                    <td>{parseFloat(item.price) * parseFloat(item.order_quantity)}</td>
-                                    <td>{item.order_quantity}</td>
-                                    <td>{item.date}</td>
-                                    <td>{item.status}</td>
+                                    <td>{item.role}</td>
+                                   
                                     <td>
                                         <div className={`dropdown dropdown-end` }>
                                             <div tabIndex={0} role="button" className="btn m-1">Manage</div>
                                             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                                <li><a onClick={()=>handleStatus('pending',item._id)}>Pending</a></li>
-                                                <li><a onClick={()=>handleStatus('delivered',item._id)}>Delivered</a></li>
+                                                <li><a onClick={()=>handleRole('user',item.email)}>Make user</a></li>
+                                                <li><a onClick={()=>handleRole('admin',item.email)}>Make admin</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -80,4 +76,4 @@ const AdminHome = () => {
     );
 };
 
-export default AdminHome;
+export default AllUsers;
