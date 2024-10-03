@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext)
@@ -18,15 +19,15 @@ const Login = () => {
 
         signIn(email, password)
             .then(() => {
-              
+
                 e.target.reset()
                 toast("logged in successfully")
-                setTimeout(function() {
-                    navigate(location?.state?location.state:"/")
-                  }, 1500);
+                setTimeout(function () {
+                    navigate(location?.state ? location.state : "/")
+                }, 1500);
 
             })
-            .catch(() =>{
+            .catch(() => {
                 toast("Email or password doesn't match")
             })
 
@@ -34,15 +35,24 @@ const Login = () => {
     }
     const handleGoogleSignIn = () => {
         googleSignIn()
-            .then(res => {
+            .then(async (res) => {
+                const userInfo = {
+                    name: res.user.displayName,
+                    email: res.user.email,
+                    role:'user'
+                }
+                const response = await axios.post('http://localhost:5000/users', userInfo)
+                console.log(response.data)
                 toast("logged in successfully")
-                setTimeout(function() {
-                    navigate(location?.state?location.state:"/")
-                  }, 1500);
+                setTimeout(function () {
+                    navigate(location?.state ? location.state : "/")
+                }, 500);
                 console.log(res.user)
+
+
             })
-          .catch(()=>toast("something goes wrong!"))
-           
+            .catch(() => toast("something goes wrong!"))
+
     }
     return (
         <div className=" flex justify-center min-h-screen bg-base-200">

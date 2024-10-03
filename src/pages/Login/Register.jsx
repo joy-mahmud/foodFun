@@ -6,6 +6,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import { updateProfile } from 'firebase/auth';
 import auth from '../../firebase/firebase.config';
+import axios from 'axios';
 const Register = () => {
     const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -28,11 +29,14 @@ const Register = () => {
             return setmsg("Password should have at least one special character")
         } else {
             createUser(email, password)
-                .then(() => {
+                .then(async() => {
                     e.target.reset()
-                    toast("you registered successfully")
-
-
+                    const userInfo ={
+                        name:name,
+                        email:email
+                    }
+                    const response = await axios.post('http://localhost:5000/users',userInfo)
+                    console.log(response.data)
                     updateProfile(auth.currentUser, {
                         displayName: name,
                         photoURL: photoUrl
@@ -42,9 +46,10 @@ const Register = () => {
                     }).catch(() => {
 
                     });
+                    toast("you registered successfully")
                     setTimeout(function () {
                         navigate(location?.state ? location.state : "/")
-                    }, 15000);
+                    }, 1000);
 
                 })
                 .catch(() => setmsg("password should be at least 6 characters"))
