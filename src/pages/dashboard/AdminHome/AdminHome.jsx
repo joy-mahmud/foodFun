@@ -41,6 +41,8 @@ const AdminHome = () => {
                                 <th></th>
                                 <th>FoodName</th>
                                 <th>Email</th>
+                                <th>Address</th>
+                                <th>Phone</th>
                                 <th>Total price</th>
                                 <th>Quantity</th>
                                 <th>Date</th>
@@ -55,6 +57,8 @@ const AdminHome = () => {
                                     <td><img src={item.img} className="h-[70px] w-[70px] rounded-xl"></img></td>
                                     <td>{item.foodName}</td>
                                     <td>{item.email}</td>
+                                    <td>{item.address}</td>
+                                    <td>{item.phone}</td>
                                     <td>{parseFloat(item.price) * parseFloat(item.order_quantity)}</td>
                                     <td>{item.order_quantity}</td>
                                     <td>{item.date}</td>

@@ -13,7 +13,7 @@ const MyOrder = () => {
     const { user, loading } = useContext(AuthContext)
     const[,refetch]=useCart()
     const [myAddedItem, setMyAddedItems] = useState([])
-    const [quantity, setQuntity] = useState([])
+    const [quantity, setQuntity] = useState(null)
     const axiosSecure = useAxios()
     const url = `/myorders?email=${user?.email}`
 
@@ -118,7 +118,8 @@ console.log('my added item',myAddedItem)
                                     {item.foodName}
                                 </td>
                                 <td>
-                                    ${item.price*quantity}
+                                    ${parseFloat(item.price)*quantity[idx]}
+                                   
                                 </td>
                                 <td>{item.date}</td>
                                 <td>{item.owner_name}</td>

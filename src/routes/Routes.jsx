@@ -51,14 +51,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><Purchase></Purchase></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
             },
-            {
-                path: '/myitems',
-                element: <MyAddedItems></MyAddedItems>
-            },
-            {
-                path: '/additem',
-                element: <AddItem></AddItem>
-            },
+          
             {
                 path: '/myorderitems',
                 element: <MyOrder></MyOrder>
@@ -102,7 +95,15 @@ const router = createBrowserRouter([
             {
                 path:'allUsers',
                 element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
-            }
+            },
+            {
+                path: 'additem',
+                element: <AdminRoute><AddItem></AddItem></AdminRoute>
+            },
+            {
+                path: 'myitems',
+                element:<AdminRoute> <MyAddedItems></MyAddedItems></AdminRoute>
+            },
         ]
     },
    

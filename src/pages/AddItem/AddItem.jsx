@@ -33,7 +33,8 @@ const AddItem = () => {
     }
     return (
         <div>
-            <div className="p-20 bg-base-200 rounded-lg my-20">
+            <h3 className="text-center font-bold text-4xl mt-5">Add a food Item</h3>
+            <div className="py-5 px-20 bg-base-200 rounded-lg mt-5">
                 <form onSubmit={handleAdditem} className="card-body">
                     <div className="grid grid-cols-2 gap-5">
                         <div className="form-control">
@@ -81,7 +82,7 @@ const AddItem = () => {
 
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn bg-[#0DA3D6] border-[#0DA3D6] text-white hover:bg-[#0DA3D6]">Add Item</button>
+                        <button className="btn bg-orange-500 border-orange-500 text-white hover:bg-[#0DA3D6]">Add This Item</button>
                     </div>
                 </form>
             </div>

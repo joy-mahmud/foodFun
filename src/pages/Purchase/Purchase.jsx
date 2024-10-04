@@ -25,6 +25,8 @@ const Purchase = () => {
         const buyer_name = form.buyer_name.value
         const email = form.email.value
         const itemId = _id
+        const phone=form.phone.value
+        const address = form.address.value
         if (owner_email == user?.email) {
             return toast("you added this product so you can not buy this product")
         }
@@ -34,7 +36,7 @@ const Purchase = () => {
         else if (quantity < order_quantity) {
             return toast("we dont have this quntity of this product you want")
         }
-        const purchaseData = { foodName, price, date, order_quantity, buyer_name, owner_name, email, img, itemId }
+        const purchaseData = { foodName, price, date, order_quantity, buyer_name, owner_name, email,phone,address, img, itemId }
         axios.post('http://localhost:5000/orders', purchaseData)
             .then(res => {
                 // console.log(res.data)
@@ -93,6 +95,16 @@ const Purchase = () => {
                         <div className="form-control">
                             <label className="ml-1" htmlFor="">Your email</label>
                             <input type="email" name="email" defaultValue={user?.email} placeholder="your email" className="input input-bordered" required readOnly />
+
+                        </div>
+                        <div className="form-control">
+                            <label className="ml-1" htmlFor="">Your address</label>
+                            <input type="text" name="address" placeholder="your address" className="input input-bordered" required />
+
+                        </div>
+                        <div className="form-control">
+                            <label className="ml-1" htmlFor="">Phone number</label>
+                            <input type="text" name="phone" placeholder="your number" className="input input-bordered" required />
 
                         </div>
 

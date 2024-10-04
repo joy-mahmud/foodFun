@@ -26,6 +26,8 @@ const Dashboard = () => {
                             <li className='w-full text-center bg-orange-500 text-white py-2 rounded-[20px] text-xl font-medium'><NavLink to={'/'}>Home</NavLink></li>
                             <li className='w-full text-center bg-orange-500 text-white py-2 rounded-[20px] text-xl font-medium'><NavLink to={'/dashboard/adminHome'} className={({isActive})=>isActive?'text-black':'text-white'}>All orders</NavLink></li>
                             <li className='w-full text-center bg-orange-500 text-white py-2 rounded-[20px] text-xl font-medium'><NavLink to={'/dashboard/allUsers'} className={({isActive})=>isActive?'text-black':'text-white'}>All users</NavLink></li>
+                            <li className='w-full text-center bg-orange-500 text-white py-2 rounded-[20px] text-xl font-medium'><NavLink to={'/dashboard/additem'} className={({isActive})=>isActive?'text-black':'text-white'}>Add an Item</NavLink></li>
+                            <li className='w-full text-center bg-orange-500 text-white py-2 rounded-[20px] text-xl font-medium'><NavLink to={'/dashboard/myitems'} className={({isActive})=>isActive?'text-black':'text-white'}>My added Items</NavLink></li>
                             <li className='w-full text-center bg-orange-500 text-white py-2 rounded-[20px] text-xl font-medium'><button onClick={logOut} >logout</button></li>
                         </ul>):(
                             <ul className='p-3 flex flex-col gap-3'>
